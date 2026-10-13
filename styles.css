@@ -1,0 +1,262 @@
+/* ============================================================================
+   PRAJA MITRA AI (ప్రజా మిత్ర AI) — ACCESSIBILITY & CUSTOM STYLES
+   Designed for Rural Accessibility, Large Tap Targets & High Contrast
+   ============================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --font-telugu: 'Noto Sans Telugu', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, system-ui, sans-serif;
+  --font-base-size: 16px;
+  --primary-emerald: #059669;
+  --primary-emerald-dark: #047857;
+  --primary-amber: #d97706;
+  --bg-page: #f8fafc;
+  --text-main: #0f172a;
+}
+
+body {
+  font-family: var(--font-telugu);
+  font-size: var(--font-base-size);
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Accessibility: Font Size Scalers */
+html.font-scale-sm {
+  --font-base-size: 15px;
+}
+html.font-scale-md {
+  --font-base-size: 17px;
+}
+html.font-scale-lg {
+  --font-base-size: 19px;
+}
+html.font-scale-xl {
+  --font-base-size: 21px;
+}
+
+/* High Contrast Mode for Elders and Low Vision */
+html.high-contrast {
+  --bg-page: #050b14;
+  --text-main: #ffffff;
+}
+html.high-contrast body {
+  background-color: #050b14 !important;
+  color: #ffffff !important;
+}
+html.high-contrast .bg-white {
+  background-color: #0f172a !important;
+  border-color: #334155 !important;
+  color: #f8fafc !important;
+}
+html.high-contrast .text-slate-900,
+html.high-contrast .text-slate-800,
+html.high-contrast .text-slate-700 {
+  color: #f1f5f9 !important;
+}
+html.high-contrast .text-slate-600,
+html.high-contrast .text-slate-500 {
+  color: #cbd5e1 !important;
+}
+html.high-contrast .bg-slate-50,
+html.high-contrast .bg-slate-100 {
+  background-color: #1e293b !important;
+}
+html.high-contrast .border-slate-200,
+html.high-contrast .border-slate-100 {
+  border-color: #475569 !important;
+}
+
+/* Accessible minimum touch target size */
+.touch-target-lg {
+  min-height: 48px;
+  min-width: 48px;
+}
+
+/* ============================================================================
+   MICROPHONE CONSOLE PULSE & GLOW ANIMATIONS
+   ============================================================================ */
+
+/* Outer Ripple Waves when active listening */
+.mic-pulse-container {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mic-pulse-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 9999px;
+  pointer-events: none;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+/* Active listening ripple effect */
+.is-listening .ring-1 {
+  width: 140%;
+  height: 140%;
+  border: 4px solid rgba(16, 185, 129, 0.6);
+  animation: rippleWave 1.8s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+.is-listening .ring-2 {
+  width: 180%;
+  height: 180%;
+  border: 3px solid rgba(16, 185, 129, 0.4);
+  animation: rippleWave 1.8s cubic-bezier(0, 0.2, 0.8, 1) 0.5s infinite;
+}
+
+.is-listening .ring-3 {
+  width: 220%;
+  height: 220%;
+  border: 2px solid rgba(16, 185, 129, 0.25);
+  animation: rippleWave 1.8s cubic-bezier(0, 0.2, 0.8, 1) 1s infinite;
+}
+
+@keyframes rippleWave {
+  0% {
+    transform: translate(-50%, -50%) scale(0.85);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.3);
+    opacity: 0;
+  }
+}
+
+/* Microphone Glowing Core Button */
+.mic-core-button {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 10px 25px -5px rgba(5, 150, 105, 0.4), 0 8px 10px -6px rgba(5, 150, 105, 0.2);
+}
+
+.mic-core-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 30px -5px rgba(5, 150, 105, 0.55), 0 10px 12px -5px rgba(5, 150, 105, 0.3);
+}
+
+.mic-core-button:active {
+  transform: scale(0.96);
+}
+
+.is-listening .mic-core-button {
+  background: linear-gradient(135deg, #ef4444, #dc2626) !important;
+  box-shadow: 0 0 0 10px rgba(239, 68, 68, 0.25), 0 15px 35px -5px rgba(220, 38, 38, 0.6) !important;
+  animation: micButtonPulse 1.4s ease-in-out infinite alternate;
+}
+
+@keyframes micButtonPulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 6px rgba(239, 68, 68, 0.2), 0 10px 25px rgba(220, 38, 38, 0.5);
+  }
+  100% {
+    transform: scale(1.06);
+    box-shadow: 0 0 0 16px rgba(239, 68, 68, 0.35), 0 18px 35px rgba(220, 38, 38, 0.7);
+  }
+}
+
+/* ============================================================================
+   VOICE EQUALIZER SOUND WAVES ANIMATION (TTS Active)
+   ============================================================================ */
+
+.equalizer-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  height: 22px;
+}
+
+.equalizer-bar {
+  width: 4px;
+  border-radius: 9999px;
+  background-color: currentColor;
+  height: 6px;
+  transition: height 0.15s ease;
+}
+
+.is-speaking .equalizer-bar {
+  animation: soundBarDance 1s ease-in-out infinite alternate;
+}
+
+.is-speaking .equalizer-bar:nth-child(1) { animation-delay: 0.1s; }
+.is-speaking .equalizer-bar:nth-child(2) { animation-delay: 0.3s; }
+.is-speaking .equalizer-bar:nth-child(3) { animation-delay: 0.5s; }
+.is-speaking .equalizer-bar:nth-child(4) { animation-delay: 0.2s; }
+.is-speaking .equalizer-bar:nth-child(5) { animation-delay: 0.4s; }
+
+@keyframes soundBarDance {
+  0% { height: 4px; }
+  50% { height: 20px; }
+  100% { height: 8px; }
+}
+
+/* Speech Wave Bar in Response Card */
+@keyframes audioWaveGlow {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+.audio-active-badge {
+  animation: audioWaveGlow 1.5s ease-in-out infinite;
+}
+
+/* ============================================================================
+   SMOOTH TRANSITIONS & CARD EFFECTS
+   ============================================================================ */
+
+.fade-in-up {
+  animation: fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.chip-hover-effect {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.chip-hover-effect:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px -3px rgba(0, 0, 0, 0.08);
+}
+.chip-hover-effect:active {
+  transform: translateY(0);
+}
+
+/* Custom Scrollbar for chips row */
+.custom-horizontal-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+.custom-horizontal-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+.custom-horizontal-scroll::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 9999px;
+}
+
+/* Document Checklist Pill Hover */
+.doc-pill {
+  transition: all 0.2s ease;
+}
+.doc-pill:hover {
+  border-color: #10b981;
+  background-color: #ecfdf5;
+}
+

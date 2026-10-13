@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="te" class="font-scale-md">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ప్రజా మిత్ర AI | Praja Mitra AI — Telugu Voice Assistant for Govt Schemes</title>
+  
+  <!-- Primary Meta Tags -->
+  <meta name="description" content="గ్రామీణ రైతులకు మరియు పౌరులకు ప్రభుత్వ సంక్షేమ పథకాలు మరియు భూ రికార్డుల సమాచారం అందించే తొలి తెలుగు వాయిస్ అసిస్టెంట్.">
+  <meta name="keywords" content="Praja Mitra AI, Telugu Voice Assistant, Rythu Bharosa, Meebhoomi, Dharani, Arogyasri, Ration Card, AP Schemes, TG Schemes">
+  <meta name="theme-color" content="#059669">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            emerald: {
+              50: '#ecfdf5',
+              100: '#d1fae5',
+              200: '#a7f3d0',
+              300: '#6ee7b7',
+              400: '#34d399',
+              500: '#10b981',
+              600: '#059669',
+              700: '#047857',
+              800: '#065f46',
+              900: '#064e3b',
+              950: '#022c22',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="min-h-screen flex flex-col bg-slate-50 text-slate-900 selection:bg-emerald-200 selection:text-emerald-900 antialiased">
+
+  <!-- TOP CIVIC ANNOUNCEMENT BAR -->
+  <header class="bg-gradient-to-r from-emerald-800 via-emerald-700 to-teal-800 text-white shadow-md">
+    <div class="max-w-6xl mx-auto px-4 py-2.5 flex flex-wrap items-center justify-between gap-3 text-xs md:text-sm">
+      
+      <!-- Civic Identity & DPI Badge -->
+      <div class="flex items-center gap-2">
+        <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-950/60 text-emerald-200 border border-emerald-500/30 font-semibold tracking-wide text-[11px]">
+          <i data-lucide="shield" class="w-3.5 h-3.5 text-emerald-300"></i>
+          Digital Public Infrastructure (DPI)
+        </span>
+        <span class="hidden sm:inline text-emerald-200/80 font-medium">|</span>
+        <span class="font-medium text-emerald-50">ఆంధ్రప్రదేశ్ & తెలంగాణ ప్రభుత్వ సంక్షేమ సేవల సహాయకి</span>
+      </div>
+
+      <!-- Emergency Helpline Contacts & Accessibility Switcher -->
+      <div class="flex items-center gap-3">
+        <!-- Helplines -->
+        <a href="tel:1902" class="inline-flex items-center gap-1 text-emerald-100 hover:text-white font-bold transition">
+          <i data-lucide="phone" class="w-3.5 h-3.5 text-amber-300"></i>
+          <span>స్పందన / ప్రజావాణి: <strong>1902</strong></span>
+        </a>
+        <span class="text-emerald-400/60 hidden md:inline">•</span>
+        <a href="tel:108" class="hidden md:inline-flex items-center gap-1 text-emerald-100 hover:text-white font-bold transition">
+          <i data-lucide="heart-pulse" class="w-3.5 h-3.5 text-rose-300"></i>
+          <span>అత్యవసరం: <strong>108</strong></span>
+        </a>
+
+        <!-- Font Scaling Accessibility Controls -->
+        <div class="flex items-center bg-emerald-950/40 rounded-lg p-0.5 border border-emerald-500/30 ml-2">
+          <button data-font-size="sm" title="చిన్న అక్షరాలు" class="px-2 py-0.5 text-xs font-bold rounded transition">A-</button>
+          <button data-font-size="md" title="సాధారణ అక్షరాలు" class="px-2 py-0.5 text-xs font-bold rounded bg-emerald-600 text-white transition">A</button>
+          <button data-font-size="lg" title="పెద్ద అక్షరాలు" class="px-2 py-0.5 text-xs font-bold rounded transition">A+</button>
+          <button data-font-size="xl" title="చాలా పెద్ద అక్షరాలు" class="px-2 py-0.5 text-xs font-bold rounded transition">A++</button>
+        </div>
+
+        <!-- High Contrast Mode Toggle -->
+        <button id="highContrastToggle" title="హై కాంట్రాస్ట్ మోడ్ మార్చండి" class="p-1 rounded-lg bg-emerald-950/40 hover:bg-emerald-950/70 border border-emerald-500/30 transition text-amber-300">
+          <i data-lucide="sun-medium" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- MAIN HEADER / HERO BRANDING -->
+  <section class="bg-white border-b border-slate-200/90 py-5 px-4 shadow-sm">
+    <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      
+      <!-- Logo and App Name -->
+      <div class="flex items-center gap-4 text-center md:text-left">
+        <div class="w-14 h-14 md:w-16 md:md:h-16 rounded-2xl bg-gradient-to-tr from-emerald-700 to-teal-600 text-white flex items-center justify-center shadow-md shadow-emerald-700/20 shrink-0">
+          <i data-lucide="mic" class="w-7 h-7 md:w-8 md:h-8"></i>
+        </div>
+        <div>
+          <div class="flex items-center justify-center md:justify-start gap-2">
+            <h1 class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight">
+              ప్రజా మిత్ర AI
+            </h1>
+            <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 border border-emerald-300">
+              తెలుగు వాయిస్
+            </span>
+          </div>
+          <p class="text-slate-600 text-sm md:text-base font-semibold mt-0.5">
+            Praja Mitra AI — Regional Voice Assistant for Welfare Schemes & Land Records
+          </p>
+        </div>
+      </div>
+
+      <!-- Feature Badges -->
+      <div class="flex flex-wrap items-center justify-center md:justify-end gap-2" id="sttSupportedBadge">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold bg-emerald-50 text-emerald-800 border border-emerald-200">
+          <i data-lucide="volume-2" class="w-3.5 h-3.5 text-emerald-600"></i>
+          ఆటోమేటిక్ వాయిస్ రీడ్ (TTS)
+        </span>
+        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold bg-slate-100 text-slate-700 border border-slate-200">
+          <i data-lucide="wifi-off" class="w-3.5 h-3.5 text-slate-500"></i>
+          ఆఫ్‌లైన్ నాలెడ్జ్ బేస్
+        </span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- NOTIFICATION BANNER (Errors, Permissions, Info) -->
+  <div id="notificationBanner" class="hidden max-w-4xl mx-auto mt-4 px-4 w-full">
+    <div class="p-4 rounded-2xl border text-sm font-semibold flex items-start gap-3 shadow-sm transition-all" id="bannerCard">
+      <i data-lucide="alert-triangle" class="w-5 h-5 shrink-0 mt-0.5"></i>
+      <div class="flex-1" id="bannerText">సందేశం ఇక్కడ కనిపిస్తుంది</div>
+      <button onclick="document.getElementById('notificationBanner').classList.add('hidden')" class="p-1 hover:opacity-70">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- MAIN INTERACTIVE WORKSPACE -->
+  <main class="flex-1 max-w-4xl w-full mx-auto px-4 py-8 flex flex-col gap-8">
+    
+    <!-- SECTION 1: MICROPHONE CONSOLE (PROMINENT VOICE HERO) -->
+    <div class="bg-white rounded-3xl p-6 md:p-10 shadow-xl border border-slate-200/90 text-center relative overflow-hidden">
+      
+      <!-- Background subtle radial glow -->
+      <div class="absolute -top-24 -left-24 w-72 h-72 bg-emerald-200/30 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute -bottom-24 -right-24 w-72 h-72 bg-teal-200/30 rounded-full blur-3xl pointer-events-none"></div>
+
+      <!-- Instruction Label -->
+      <div class="relative z-10 max-w-lg mx-auto mb-6">
+        <h2 class="text-xl md:text-2xl font-extrabold text-slate-900 leading-snug">
+          మీకు ఏ పథకం లేదా సమాచారం కావాలో <span class="text-emerald-700 underline decoration-emerald-400">తెలుగులో మాట్లాడండి</span>
+        </h2>
+        <p class="text-slate-600 text-sm md:text-base font-medium mt-1">
+          మైక్రోఫోన్ బటన్ నొక్కి రైతు భరోసా, పట్టాదారు పాస్ బుక్, ఆరోగ్యశ్రీ, పెన్షన్ లేదా రేషన్ కార్డు గురించి అడగండి.
+        </p>
+      </div>
+
+      <!-- THE MASSIVE ACCESSIBLE MICROPHONE BUTTON -->
+      <div class="relative z-10 my-4 flex flex-col items-center justify-center">
+        
+        <div id="micContainer" class="mic-pulse-container">
+          <!-- Animated pulse rings when active -->
+          <div class="mic-pulse-ring ring-1"></div>
+          <div class="mic-pulse-ring ring-2"></div>
+          <div class="mic-pulse-ring ring-3"></div>
+
+          <!-- Main Touch Target Button (Minimum 104px for rural accessibility) -->
+          <button id="micButton" type="button" aria-label="మాట్లాడటానికి మైక్ బటన్ నొక్కండి"
+            class="mic-core-button w-28 h-28 md:w-32 md:h-32 rounded-full bg-gradient-to-tr from-emerald-600 via-emerald-600 to-teal-500 text-white flex flex-col items-center justify-center gap-1 cursor-pointer focus:outline-none focus:ring-4 focus:ring-emerald-400/50 active:scale-95 z-20">
+            <i data-lucide="mic" class="w-12 h-12 md:w-14 md:h-14"></i>
+            <span class="text-[11px] md:text-xs font-bold uppercase tracking-wider">నొక్కండి</span>
+          </button>
+        </div>
+
+        <!-- Real-Time Status Indicator Badge -->
+        <div class="mt-6 flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 border border-slate-200 text-slate-800 text-xs md:text-sm font-bold shadow-inner">
+          <span id="micStatusDot" class="w-3 h-3 rounded-full bg-emerald-500"></span>
+          <span id="micStatusText">మైక్ సిద్ధంగా ఉంది — మాట్లాడటానికి నొక్కండి</span>
+        </div>
+
+        <!-- LIVE TRANSCRIPTION SPEECH BUBBLE -->
+        <div id="transcriptContainer" class="hidden mt-6 w-full max-w-xl mx-auto p-4 rounded-2xl bg-emerald-50/70 border-2 border-emerald-300 text-center transition-all">
+          <div class="text-xs font-bold uppercase tracking-wider text-emerald-800 flex items-center justify-center gap-1.5 mb-1">
+            <i data-lucide="message-square" class="w-3.5 h-3.5 text-emerald-600"></i>
+            <span>మీరు మాట్లాడిన మాటలు (Your Voice Input):</span>
+          </div>
+          <p id="transcriptText" class="text-lg md:text-xl font-bold text-slate-900 leading-relaxed">
+            ...
+          </p>
+        </div>
+
+      </div>
+
+      <!-- ALTERNATIVE FALLBACK: MANUAL TYPING BAR -->
+      <div class="relative z-10 mt-6 pt-6 border-t border-slate-100 max-w-xl mx-auto">
+        <label for="manualSearchInput" class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2 text-center md:text-left">
+          లేదా ఇక్కడ టైప్ చేసి శోధించండి (Or Type / Search Scheme):
+        </label>
+        <div class="flex items-center gap-2">
+          <div class="relative flex-1">
+            <i data-lucide="search" class="w-5 h-5 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2"></i>
+            <input type="text" id="manualSearchInput" placeholder="ఉదా: రైతు భరోసా, పట్టాదారు పాస్ బుక్, ఆరోగ్యశ్రీ..."
+              class="w-full pl-11 pr-4 py-3 rounded-2xl border-2 border-slate-200 focus:border-emerald-600 focus:outline-none text-slate-900 text-sm md:text-base font-medium placeholder-slate-400 bg-slate-50 focus:bg-white transition">
+          </div>
+          <button id="searchButton" type="button"
+            class="px-5 py-3 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm md:text-base shadow-sm transition active:scale-95 touch-target-lg shrink-0 flex items-center gap-2">
+            <span>వెతకండి</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SECTION 2: EMERGENCY DEMO FAILSAFE (QUICK CHIPS ROW) -->
+    <div class="flex flex-col gap-3">
+      <div class="flex items-center justify-between px-1">
+        <h3 class="text-xs md:text-sm font-bold uppercase tracking-wider text-slate-600 flex items-center gap-2">
+          <i data-lucide="sparkles" class="w-4 h-4 text-emerald-600"></i>
+          <span>త్వరిత ప్రశ్నలు (Quick Demo Questions for Live Judging):</span>
+        </h3>
+        <span class="text-xs text-emerald-700 font-semibold bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+          ఒక్క క్లిక్‌తో సమాధానం
+        </span>
+      </div>
+
+      <!-- Scrollable horizontal chip list -->
+      <div id="quickChipsContainer" class="flex items-center gap-2.5 overflow-x-auto pb-2 custom-horizontal-scroll pt-1">
+        <!-- Rendered by voice_assistant.js -->
+      </div>
+    </div>
+
+    <!-- SECTION 3: WELCOME GUIDE CARD (When Idle) -->
+    <div id="welcomeCard" class="bg-white rounded-3xl p-6 md:p-8 shadow-md border border-slate-200/80">
+      <div class="flex items-center gap-3 border-b border-slate-100 pb-4 mb-6">
+        <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
+          <i data-lucide="help-circle" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <h3 class="text-lg md:text-xl font-bold text-slate-900">
+            ప్రజా మిత్ర AI ని ఎలా ఉపయోగించాలి?
+          </h3>
+          <p class="text-xs text-slate-500 font-medium">
+            How to use Praja Mitra AI in 3 simple steps
+          </p>
+        </div>
+      </div>
+
+      <!-- 3 Simple Steps Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        
+        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/70 flex flex-col items-start">
+          <div class="w-9 h-9 rounded-full bg-emerald-600 text-white font-extrabold flex items-center justify-center text-sm mb-3">
+            1
+          </div>
+          <h4 class="font-bold text-slate-900 text-base mb-1">మైక్ బటన్ నొక్కండి</h4>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            పైనున్న పెద్ద ఆకుపచ్చ మైక్ బటన్‌ను ఒకసారి నొక్కితే "వింటున్నాను" అని కనిపిస్తుంది.
+          </p>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/70 flex flex-col items-start">
+          <div class="w-9 h-9 rounded-full bg-emerald-600 text-white font-extrabold flex items-center justify-center text-sm mb-3">
+            2
+          </div>
+          <h4 class="font-bold text-slate-900 text-base mb-1">తెలుగులో అడగండి</h4>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            మీకు కావాల్సిన పథకం గురించి సాధారణ తెలుగులో స్పష్టంగా ఒక వాక్యం మాట్లాడండి.
+          </p>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/70 flex flex-col items-start">
+          <div class="w-9 h-9 rounded-full bg-emerald-600 text-white font-extrabold flex items-center justify-center text-sm mb-3">
+            3
+          </div>
+          <h4 class="font-bold text-slate-900 text-base mb-1">సమాధానం వినండి & చూడండి</h4>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            అసిస్టెంట్ స్వయంగా మాట్లాడి వివరాలు చెబుతుంది, అలాగే కావలసిన కాగితాల లిస్ట్ చూపిస్తుంది.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- 5 Main Domains Quick Showcase -->
+      <div class="mt-6 pt-5 border-t border-slate-100">
+        <p class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">
+          ఈ క్రింది ముఖ్యమైన 5 సంక్షేమ రంగాలకు పూర్తి సమాచారం అందుబాటులో ఉంది:
+        </p>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2.5 text-center">
+          <div class="p-3 rounded-xl bg-emerald-50/60 border border-emerald-200 text-emerald-950 font-bold text-xs">
+            🌾 రైతు భరోసా & పీఎం కిసాన్
+          </div>
+          <div class="p-3 rounded-xl bg-amber-50/60 border border-amber-200 text-amber-950 font-bold text-xs">
+            📜 పట్టాదారు పాస్ బుక్ & మీభూమి
+          </div>
+          <div class="p-3 rounded-xl bg-rose-50/60 border border-rose-200 text-rose-950 font-bold text-xs">
+            🏥 ఆరోగ్యశ్రీ ఉచిత వైద్యం
+          </div>
+          <div class="p-3 rounded-xl bg-purple-50/60 border border-purple-200 text-purple-950 font-bold text-xs">
+            👴 వృద్ధాప్య & సామాజిక పెన్షన్లు
+          </div>
+          <div class="p-3 rounded-xl bg-sky-50/60 border border-sky-200 text-sky-950 font-bold text-xs">
+            🍚 బియ్యం కార్డు & పౌర సరఫరాలు
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 4: DYNAMIC RESPONSE PANEL (INJECTED BY JS) -->
+    <div id="responseContainer" class="hidden w-full flex flex-col gap-6">
+      <!-- Dynamic response card will be rendered here -->
+    </div>
+
+  </main>
+
+  <!-- CIVIC FOOTER -->
+  <footer class="bg-slate-900 text-slate-300 py-10 px-4 mt-12 border-t border-slate-800">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left text-xs md:text-sm">
+      
+      <div>
+        <div class="flex items-center justify-center md:justify-start gap-2 mb-1">
+          <span class="font-extrabold text-white text-base">ప్రజా మిత్ర AI (Praja Mitra AI)</span>
+          <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-bold text-[11px] border border-emerald-500/30">
+            v1.0 Production Ready
+          </span>
+        </div>
+        <p class="text-slate-400 max-w-md">
+          గ్రామీణ, రైతు మరియు అట్టడుగు వర్గాల ప్రజలకు డిజిటల్ గవర్నెన్స్ సేవలను వారి మాతృభాష తెలుగులో మరింత చేరువ చేసే ప్రజా సాంకేతిక ప్రయత్నం.
+        </p>
+      </div>
+
+      <!-- Quick Outbound Portals -->
+      <div class="flex flex-wrap items-center justify-center gap-4 text-xs font-semibold">
+        <a href="https://meebhoomi.ap.gov.in" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:text-emerald-300 transition">
+          మీభూమి (AP)
+        </a>
+        <span class="text-slate-600">•</span>
+        <a href="https://dharani.telangana.gov.in" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:text-emerald-300 transition">
+          ధరణి (TG)
+        </a>
+        <span class="text-slate-600">•</span>
+        <a href="https://pmkisan.gov.in" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:text-emerald-300 transition">
+          పీఎం కిసాన్
+        </a>
+        <span class="text-slate-600">•</span>
+        <a href="https://ysraarogyasri.ap.gov.in" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:text-emerald-300 transition">
+          ఆరోగ్యశ్రీ
+        </a>
+        <span class="text-slate-600">•</span>
+        <a href="https://epdsap.ap.gov.in" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:text-emerald-300 transition">
+          ఈ-పీడీఎస్ (రేషన్)
+        </a>
+      </div>
+
+    </div>
+
+    <div class="max-w-6xl mx-auto mt-8 pt-6 border-t border-slate-800 text-center text-[11px] text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <span>Designed with ❤️ for Andhra Pradesh & Telangana Citizens | WCAG 2.1 AAA Accessibility Compliant</span>
+      <span>100% Client-Side Knowledge Base • Zero Latency • Offline Ready</span>
+    </div>
+  </footer>
+
+  <!-- Application Logic Scripts -->
+  <script src="schemes_data.js"></script>
+  <script src="voice_assistant.js"></script>
+</body>
+</html>
+

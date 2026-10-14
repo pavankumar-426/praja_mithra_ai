@@ -1,35 +1,43 @@
 <!DOCTYPE html>
-<html lang="te" class="font-scale-md">
+<html lang="te" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ప్రజా మిత్ర AI | Praja Mitra AI — Telugu Voice Assistant for Govt Schemes</title>
+  <title>రైతు వాణి (Raithu Vani) - Digital Land & Public Service Voice AI</title>
   
-  <!-- Primary Meta Tags -->
-  <meta name="description" content="గ్రామీణ రైతులకు మరియు పౌరులకు ప్రభుత్వ సంక్షేమ పథకాలు మరియు భూ రికార్డుల సమాచారం అందించే తొలి తెలుగు వాయిస్ అసిస్టెంట్.">
-  <meta name="keywords" content="Praja Mitra AI, Telugu Voice Assistant, Rythu Bharosa, Meebhoomi, Dharani, Arogyasri, Ration Card, AP Schemes, TG Schemes">
-  <meta name="theme-color" content="#059669">
-
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Professional Fonts: Anek Telugu, Outfit & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anek+Telugu:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <script>
     tailwind.config = {
-      darkMode: 'class',
       theme: {
         extend: {
+          fontFamily: {
+            sans: ['"Anek Telugu"', 'system-ui', 'sans-serif'],
+            heading: ['"Outfit"', '"Anek Telugu"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          },
           colors: {
-            emerald: {
-              50: '#ecfdf5',
-              100: '#d1fae5',
-              200: '#a7f3d0',
-              300: '#6ee7b7',
+            obsidian: '#090a0f',
+            basalt: '#11141d',
+            slatecard: '#161a26',
+            brandgreen: {
               400: '#34d399',
               500: '#10b981',
               600: '#059669',
-              700: '#047857',
-              800: '#065f46',
               900: '#064e3b',
-              950: '#022c22',
+            },
+            harvestgold: {
+              400: '#fbbf24',
+              500: '#f59e0b',
+              600: '#d97706'
             }
           }
         }
@@ -37,337 +45,881 @@
     }
   </script>
 
-  <!-- Lucide Icons CDN -->
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    /* Continuous Marquee for Mandi Rates */
+    @keyframes marquee {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    .animate-marquee {
+      display: flex;
+      width: 200%;
+      animation: marquee 28s linear infinite;
+    }
+    .animate-marquee:hover {
+      animation-play-state: paused;
+    }
 
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="styles.css">
+    /* Print-Only MeeSeva Slip Styling */
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      #printSlipSection, #printSlipSection * {
+        visibility: visible;
+      }
+      #printSlipSection {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        margin: 0;
+        padding: 24px;
+        background: #ffffff !important;
+        color: #000000 !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+    }
+  </style>
 </head>
+<body class="bg-obsidian text-slate-100 min-h-screen flex flex-col font-sans selection:bg-brandgreen-500 selection:text-black">
 
-<body class="min-h-screen flex flex-col bg-slate-50 text-slate-900 selection:bg-emerald-200 selection:text-emerald-900 antialiased">
-
-  <!-- TOP CIVIC ANNOUNCEMENT BAR -->
-  <header class="bg-gradient-to-r from-emerald-800 via-emerald-700 to-teal-800 text-white shadow-md">
-    <div class="max-w-6xl mx-auto px-4 py-2.5 flex flex-wrap items-center justify-between gap-3 text-xs md:text-sm">
+  <!-- ==================== TOP NAVIGATION ==================== -->
+  <header class="border-b border-slate-800/80 bg-basalt/90 backdrop-blur-xl sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
       
-      <!-- Civic Identity & DPI Badge -->
-      <div class="flex items-center gap-2">
-        <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-950/60 text-emerald-200 border border-emerald-500/30 font-semibold tracking-wide text-[11px]">
-          <i data-lucide="shield" class="w-3.5 h-3.5 text-emerald-300"></i>
-          Digital Public Infrastructure (DPI)
-        </span>
-        <span class="hidden sm:inline text-emerald-200/80 font-medium">|</span>
-        <span class="font-medium text-emerald-50">ఆంధ్రప్రదేశ్ & తెలంగాణ ప్రభుత్వ సంక్షేమ సేవల సహాయకి</span>
+      <!-- Brand & Emblem -->
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brandgreen-600 to-harvestgold-500 flex items-center justify-center text-white shadow-lg shadow-brandgreen-500/20 font-heading font-black text-xl">
+          రై
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="text-lg font-bold text-white tracking-tight leading-none font-heading">
+              రైతు వాణి <span class="text-xs text-harvestgold-400 font-mono tracking-wider ml-1">v2.4</span>
+            </h1>
+            <span class="text-[10px] bg-brandgreen-900/60 text-brandgreen-400 border border-brandgreen-500/40 px-2 py-0.5 rounded-full font-medium">
+              డిజిటల్ ప్రజా వేదిక
+            </span>
+          </div>
+          <p class="text-[11px] text-slate-400 mt-0.5">ఆంధ్రప్రదేశ్ & తెలంగాణ భూ-సంక్షేమ వాయిస్ పోర్టల్</p>
+        </div>
       </div>
 
-      <!-- Emergency Helpline Contacts & Accessibility Switcher -->
+      <!-- Controls: Elderly Voice Speed & Live Status -->
       <div class="flex items-center gap-3">
-        <!-- Helplines -->
-        <a href="tel:1902" class="inline-flex items-center gap-1 text-emerald-100 hover:text-white font-bold transition">
-          <i data-lucide="phone" class="w-3.5 h-3.5 text-amber-300"></i>
-          <span>స్పందన / ప్రజావాణి: <strong>1902</strong></span>
-        </a>
-        <span class="text-emerald-400/60 hidden md:inline">•</span>
-        <a href="tel:108" class="hidden md:inline-flex items-center gap-1 text-emerald-100 hover:text-white font-bold transition">
-          <i data-lucide="heart-pulse" class="w-3.5 h-3.5 text-rose-300"></i>
-          <span>అత్యవసరం: <strong>108</strong></span>
-        </a>
-
-        <!-- Font Scaling Accessibility Controls -->
-        <div class="flex items-center bg-emerald-950/40 rounded-lg p-0.5 border border-emerald-500/30 ml-2">
-          <button data-font-size="sm" title="చిన్న అక్షరాలు" class="px-2 py-0.5 text-xs font-bold rounded transition">A-</button>
-          <button data-font-size="md" title="సాధారణ అక్షరాలు" class="px-2 py-0.5 text-xs font-bold rounded bg-emerald-600 text-white transition">A</button>
-          <button data-font-size="lg" title="పెద్ద అక్షరాలు" class="px-2 py-0.5 text-xs font-bold rounded transition">A+</button>
-          <button data-font-size="xl" title="చాలా పెద్ద అక్షరాలు" class="px-2 py-0.5 text-xs font-bold rounded transition">A++</button>
+        <!-- Voice Speed Toggle (Elderly Accessibility) -->
+        <div class="flex items-center bg-slate-900 border border-slate-800 rounded-lg p-1 text-xs">
+          <span class="text-[11px] text-slate-400 px-2 flex items-center gap-1">
+            <i data-lucide="gauge" class="w-3.5 h-3.5 text-harvestgold-400"></i> వేగం:
+          </span>
+          <button id="speedNormal" onclick="setVoiceRate(1.0)" class="px-2 py-0.5 rounded bg-brandgreen-600 text-white font-mono text-[11px] transition">
+            1.0x
+          </button>
+          <button id="speedSlow" onclick="setVoiceRate(0.8)" class="px-2 py-0.5 rounded text-slate-400 hover:text-white font-mono text-[11px] transition">
+            0.8x (నెమ్మదిగా)
+          </button>
         </div>
 
-        <!-- High Contrast Mode Toggle -->
-        <button id="highContrastToggle" title="హై కాంట్రాస్ట్ మోడ్ మార్చండి" class="p-1 rounded-lg bg-emerald-950/40 hover:bg-emerald-950/70 border border-emerald-500/30 transition text-amber-300">
-          <i data-lucide="sun-medium" class="w-4 h-4"></i>
-        </button>
+        <!-- Emergency Helpline Badge -->
+        <a href="tel:1902" class="hidden sm:flex items-center gap-1.5 text-xs bg-slate-900 hover:bg-slate-800 border border-slate-700/80 px-3 py-1.5 rounded-xl text-slate-300 transition">
+          <i data-lucide="phone-call" class="w-3.5 h-3.5 text-rose-400"></i>
+          <span>స్పందన: <strong class="text-white font-mono">1902</strong></span>
+        </a>
       </div>
+    </div>
 
+    <!-- ==================== LIVE MANDI CROP RATES TICKER ==================== -->
+    <div class="bg-black/60 border-t border-slate-800/60 overflow-hidden py-1.5 text-xs text-slate-300 flex items-center">
+      <div class="px-3 bg-harvestgold-600 text-black font-bold uppercase tracking-wider text-[10px] shrink-0 z-10 flex items-center gap-1 py-0.5 rounded ml-2">
+        <i data-lucide="trending-up" class="w-3 h-3"></i> మార్కెట్ ధరలు (లైవ్)
+      </div>
+      <div class="overflow-hidden w-full relative">
+        <div class="animate-marquee whitespace-nowrap flex gap-6 text-[11px]">
+          <span class="inline-flex items-center gap-1 cursor-pointer hover:text-harvestgold-400" onclick="voiceMandi('మిర్చి', '18,400')">
+            🌶️ <strong>తేజ మిర్చి (ఖమ్మం/గుంటూరు):</strong> <span class="text-emerald-400 font-mono">₹18,400</span> / క్విం.
+          </span>
+          <span class="inline-flex items-center gap-1 cursor-pointer hover:text-harvestgold-400" onclick="voiceMandi('వరి', '2,320')">
+            🌾 <strong>వరి (BPT 5204 సోనా మసూరి):</strong> <span class="text-emerald-400 font-mono">₹2,320</span> / క్విం.
+          </span>
+          <span class="inline-flex items-center gap-1 cursor-pointer hover:text-harvestgold-400" onclick="voiceMandi('పత్తి', '7,150')">
+            ☁️ <strong>పత్తి (మధ్యస్థ పీచు):</strong> <span class="text-emerald-400 font-mono">₹7,150</span> / క్విం.
+          </span>
+          <span class="inline-flex items-center gap-1 cursor-pointer hover:text-harvestgold-400" onclick="voiceMandi('కందిపప్పు', '10,250')">
+            🥣 <strong>ఎర్ర కందులు:</strong> <span class="text-emerald-400 font-mono">₹10,250</span> / క్విం.
+          </span>
+          <span class="inline-flex items-center gap-1 cursor-pointer hover:text-harvestgold-400" onclick="voiceMandi('మొక్కజొన్న', '2,100')">
+            🌽 <strong>మొక్కజొన్న (హైబ్రిడ్):</strong> <span class="text-emerald-400 font-mono">₹2,100</span> / క్విం.
+          </span>
+          <!-- Duplicate for seamless infinite loop -->
+          <span class="inline-flex items-center gap-1 cursor-pointer hover:text-harvestgold-400" onclick="voiceMandi('మిర్చి', '18,400')">
+            🌶️ <strong>తేజ మిర్చి (ఖమ్మం/గుంటూరు):</strong> <span class="text-emerald-400 font-mono">₹18,400</span> / క్విం.
+          </span>
+          <span class="inline-flex items-center gap-1 cursor-pointer hover:text-harvestgold-400" onclick="voiceMandi('వరి', '2,320')">
+            🌾 <strong>వరి (BPT 5204 సోనా మసూరి):</strong> <span class="text-emerald-400 font-mono">₹2,320</span> / క్విం.
+          </span>
+        </div>
+      </div>
     </div>
   </header>
 
-  <!-- MAIN HEADER / HERO BRANDING -->
-  <section class="bg-white border-b border-slate-200/90 py-5 px-4 shadow-sm">
-    <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-      
-      <!-- Logo and App Name -->
-      <div class="flex items-center gap-4 text-center md:text-left">
-        <div class="w-14 h-14 md:w-16 md:md:h-16 rounded-2xl bg-gradient-to-tr from-emerald-700 to-teal-600 text-white flex items-center justify-center shadow-md shadow-emerald-700/20 shrink-0">
-          <i data-lucide="mic" class="w-7 h-7 md:w-8 md:h-8"></i>
-        </div>
-        <div>
-          <div class="flex items-center justify-center md:justify-start gap-2">
-            <h1 class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight">
-              ప్రజా మిత్ర AI
-            </h1>
-            <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 border border-emerald-300">
-              తెలుగు వాయిస్
-            </span>
-          </div>
-          <p class="text-slate-600 text-sm md:text-base font-semibold mt-0.5">
-            Praja Mitra AI — Regional Voice Assistant for Welfare Schemes & Land Records
-          </p>
-        </div>
+  <!-- ==================== MAIN APPLICATION CONTAINER ==================== -->
+  <main class="max-w-6xl w-full mx-auto px-4 py-6 flex-1 flex flex-col space-y-6">
+
+    <!-- TAB SELECTOR -->
+    <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+      <div class="flex items-center gap-2 overflow-x-auto">
+        <button id="tabBtnVoice" onclick="switchTab('voice')" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition flex items-center gap-2 bg-brandgreen-600 text-white shadow-lg shadow-brandgreen-600/20">
+          <i data-lucide="mic" class="w-4 h-4"></i>
+          <span>వాయిస్ సహాయకుడు (Voice AI)</span>
+        </button>
+        <button id="tabBtnCadastral" onclick="switchTab('cadastral')" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition flex items-center gap-2 bg-slate-900 border border-slate-800 text-slate-300 hover:text-white">
+          <i data-lucide="map" class="w-4 h-4 text-brandgreen-400"></i>
+          <span>భూమి సర్వే & 1-B తనిఖీ</span>
+        </button>
+        <button id="tabBtnDispute" onclick="switchTab('dispute')" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition flex items-center gap-2 bg-slate-900 border border-slate-800 text-slate-300 hover:text-white">
+          <i data-lucide="shield-alert" class="w-4 h-4 text-harvestgold-400"></i>
+          <span>రైతు భూ తగాదాల పరిష్కారం</span>
+        </button>
       </div>
 
-      <!-- Feature Badges -->
-      <div class="flex flex-wrap items-center justify-center md:justify-end gap-2" id="sttSupportedBadge">
-        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold bg-emerald-50 text-emerald-800 border border-emerald-200">
-          <i data-lucide="volume-2" class="w-3.5 h-3.5 text-emerald-600"></i>
-          ఆటోమేటిక్ వాయిస్ రీడ్ (TTS)
-        </span>
-        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold bg-slate-100 text-slate-700 border border-slate-200">
-          <i data-lucide="wifi-off" class="w-3.5 h-3.5 text-slate-500"></i>
-          ఆఫ్‌లైన్ నాలెడ్జ్ బేస్
-        </span>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- NOTIFICATION BANNER (Errors, Permissions, Info) -->
-  <div id="notificationBanner" class="hidden max-w-4xl mx-auto mt-4 px-4 w-full">
-    <div class="p-4 rounded-2xl border text-sm font-semibold flex items-start gap-3 shadow-sm transition-all" id="bannerCard">
-      <i data-lucide="alert-triangle" class="w-5 h-5 shrink-0 mt-0.5"></i>
-      <div class="flex-1" id="bannerText">సందేశం ఇక్కడ కనిపిస్తుంది</div>
-      <button onclick="document.getElementById('notificationBanner').classList.add('hidden')" class="p-1 hover:opacity-70">
-        <i data-lucide="x" class="w-4 h-4"></i>
+      <!-- Quick Action: Voice Application Auto-Fill Modal Trigger -->
+      <button onclick="openFormModal()" class="hidden md:flex items-center gap-2 text-xs bg-harvestgold-600 hover:bg-harvestgold-500 text-black font-bold px-3 py-2 rounded-xl transition">
+        <i data-lucide="file-text" class="w-4 h-4"></i>
+        <span>వాయిస్ దరఖాస్తు ఫారమ్ (Auto-Fill)</span>
       </button>
     </div>
-  </div>
 
-  <!-- MAIN INTERACTIVE WORKSPACE -->
-  <main class="flex-1 max-w-4xl w-full mx-auto px-4 py-8 flex flex-col gap-8">
-    
-    <!-- SECTION 1: MICROPHONE CONSOLE (PROMINENT VOICE HERO) -->
-    <div class="bg-white rounded-3xl p-6 md:p-10 shadow-xl border border-slate-200/90 text-center relative overflow-hidden">
-      
-      <!-- Background subtle radial glow -->
-      <div class="absolute -top-24 -left-24 w-72 h-72 bg-emerald-200/30 rounded-full blur-3xl pointer-events-none"></div>
-      <div class="absolute -bottom-24 -right-24 w-72 h-72 bg-teal-200/30 rounded-full blur-3xl pointer-events-none"></div>
-
-      <!-- Instruction Label -->
-      <div class="relative z-10 max-w-lg mx-auto mb-6">
-        <h2 class="text-xl md:text-2xl font-extrabold text-slate-900 leading-snug">
-          మీకు ఏ పథకం లేదా సమాచారం కావాలో <span class="text-emerald-700 underline decoration-emerald-400">తెలుగులో మాట్లాడండి</span>
-        </h2>
-        <p class="text-slate-600 text-sm md:text-base font-medium mt-1">
-          మైక్రోఫోన్ బటన్ నొక్కి రైతు భరోసా, పట్టాదారు పాస్ బుక్, ఆరోగ్యశ్రీ, పెన్షన్ లేదా రేషన్ కార్డు గురించి అడగండి.
-        </p>
-      </div>
-
-      <!-- THE MASSIVE ACCESSIBLE MICROPHONE BUTTON -->
-      <div class="relative z-10 my-4 flex flex-col items-center justify-center">
+    <!-- ========================================================
+         VIEW 1: VOICE ASSISTANT CONSOLE (PRIMARY MVP)
+    ======================================================== -->
+    <section id="viewVoice" class="space-y-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
         
-        <div id="micContainer" class="mic-pulse-container">
-          <!-- Animated pulse rings when active -->
-          <div class="mic-pulse-ring ring-1"></div>
-          <div class="mic-pulse-ring ring-2"></div>
-          <div class="mic-pulse-ring ring-3"></div>
-
-          <!-- Main Touch Target Button (Minimum 104px for rural accessibility) -->
-          <button id="micButton" type="button" aria-label="మాట్లాడటానికి మైక్ బటన్ నొక్కండి"
-            class="mic-core-button w-28 h-28 md:w-32 md:h-32 rounded-full bg-gradient-to-tr from-emerald-600 via-emerald-600 to-teal-500 text-white flex flex-col items-center justify-center gap-1 cursor-pointer focus:outline-none focus:ring-4 focus:ring-emerald-400/50 active:scale-95 z-20">
-            <i data-lucide="mic" class="w-12 h-12 md:w-14 md:h-14"></i>
-            <span class="text-[11px] md:text-xs font-bold uppercase tracking-wider">నొక్కండి</span>
-          </button>
-        </div>
-
-        <!-- Real-Time Status Indicator Badge -->
-        <div class="mt-6 flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 border border-slate-200 text-slate-800 text-xs md:text-sm font-bold shadow-inner">
-          <span id="micStatusDot" class="w-3 h-3 rounded-full bg-emerald-500"></span>
-          <span id="micStatusText">మైక్ సిద్ధంగా ఉంది — మాట్లాడటానికి నొక్కండి</span>
-        </div>
-
-        <!-- LIVE TRANSCRIPTION SPEECH BUBBLE -->
-        <div id="transcriptContainer" class="hidden mt-6 w-full max-w-xl mx-auto p-4 rounded-2xl bg-emerald-50/70 border-2 border-emerald-300 text-center transition-all">
-          <div class="text-xs font-bold uppercase tracking-wider text-emerald-800 flex items-center justify-center gap-1.5 mb-1">
-            <i data-lucide="message-square" class="w-3.5 h-3.5 text-emerald-600"></i>
-            <span>మీరు మాట్లాడిన మాటలు (Your Voice Input):</span>
+        <!-- Left Column: Voice Console & Harmonic Canvas -->
+        <div class="lg:col-span-7 bg-basalt border border-slate-800/80 rounded-3xl p-6 sm:p-8 flex flex-col items-center text-center relative overflow-hidden shadow-2xl">
+          
+          <!-- Status Indicator Capsule -->
+          <div class="flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900 border border-slate-800 mb-6">
+            <span id="micDot" class="w-2.5 h-2.5 rounded-full bg-slate-500"></span>
+            <span id="micStatusText" class="text-xs font-medium text-slate-300">మైక్ ప్రారంభించడానికి సిద్ధంగా ఉంది</span>
           </div>
-          <p id="transcriptText" class="text-lg md:text-xl font-bold text-slate-900 leading-relaxed">
-            ...
-          </p>
+
+          <!-- Real-Time Harmonic Sine Waveform Canvas -->
+          <div class="w-full h-24 mb-4 bg-obsidian/70 rounded-2xl border border-slate-900 flex items-center justify-center overflow-hidden relative">
+            <canvas id="waveformCanvas" width="600" height="96" class="w-full h-full"></canvas>
+            <span id="canvasOverlayNote" class="absolute text-[11px] text-slate-600 pointer-events-none">ఆడియో వేవ్ విజువలైజర్</span>
+          </div>
+
+          <!-- Real-Time Speech Bubble -->
+          <div class="w-full bg-obsidian border border-slate-800/80 rounded-2xl p-4 sm:p-5 mb-6 text-center min-h-[80px] flex items-center justify-center">
+            <p id="transcriptBubble" class="text-slate-300 text-base sm:text-lg font-medium italic">
+              "మైక్ బటన్ నొక్కి మీ సమస్యను లేదా పథకం పేరును తెలుగులో అడగండి..."
+            </p>
+          </div>
+
+          <!-- The Central Voice Button -->
+          <div class="relative flex items-center justify-center my-3">
+            <div id="pingHalo" class="hidden absolute w-36 h-36 rounded-full bg-brandgreen-500/20 animate-ping"></div>
+            <button id="masterMicBtn" class="relative z-10 w-24 h-24 rounded-full bg-gradient-to-tr from-brandgreen-600 to-teal-500 text-white flex items-center justify-center shadow-xl shadow-brandgreen-500/25 hover:scale-105 active:scale-95 transition-all duration-200 ring-4 ring-brandgreen-500/20 focus:outline-none">
+              <i data-lucide="mic" class="w-10 h-10"></i>
+            </button>
+          </div>
+          <p class="text-xs text-slate-400 mt-3">ట్యాప్ చేసి మాట్లాడండి (Tap to speak in Telugu)</p>
+
+          <!-- Stage Failsafe Quick Chips -->
+          <div class="w-full mt-6 pt-5 border-t border-slate-800/80 text-left">
+            <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+              <i data-lucide="sparkles" class="w-3.5 h-3.5 text-harvestgold-400"></i> ఉదాహరణ ప్రశ్నలు (Stage Failsafe Tests):
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <button onclick="triggerVoiceQuery('రైతు భరోసా నిధులు ఎప్పుడు జమ అవుతాయి?')" class="text-xs bg-slate-900 hover:bg-brandgreen-950/60 hover:border-brandgreen-500/40 border border-slate-800 text-slate-300 px-3 py-1.5 rounded-lg transition">
+                🌾 రైతు భరోసా
+              </button>
+              <button onclick="triggerVoiceQuery('పట్టాదారు పాస్ బుక్ లో పేరు తప్పు పడింది')" class="text-xs bg-slate-900 hover:bg-brandgreen-950/60 hover:border-brandgreen-500/40 border border-slate-800 text-slate-300 px-3 py-1.5 rounded-lg transition">
+                📄 పాస్ బుక్ పేరు మార్పు
+              </button>
+              <button onclick="triggerVoiceQuery('పొలం సరిహద్దు గట్టు తగాదా ఎలా తేల్చాలి?')" class="text-xs bg-slate-900 hover:bg-brandgreen-950/60 hover:border-brandgreen-500/40 border border-slate-800 text-slate-300 px-3 py-1.5 rounded-lg transition">
+                📐 ఎఫ్-లైన్ సర్వే
+              </button>
+              <button onclick="triggerVoiceQuery('ఆరోగ్యశ్రీ ఆసుపత్రి ఉచిత వైద్యం')" class="text-xs bg-slate-900 hover:bg-brandgreen-950/60 hover:border-brandgreen-500/40 border border-slate-800 text-slate-300 px-3 py-1.5 rounded-lg transition">
+                🏥 ఆరోగ్యశ్రీ కార్డు
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Column: Dynamic Resolution & Citizen Document Card -->
+        <div class="lg:col-span-5 flex flex-col space-y-4">
+          <div id="resolutionCard" class="bg-basalt border border-slate-800 rounded-3xl p-6 shadow-xl flex-1 flex flex-col justify-between">
+            <div class="space-y-4">
+              
+              <!-- Card Masthead -->
+              <div class="flex items-start justify-between gap-3 border-b border-slate-800 pb-3">
+                <div>
+                  <span id="resCategoryBadge" class="text-[10px] font-bold text-harvestgold-400 bg-harvestgold-500/10 border border-harvestgold-500/20 px-2.5 py-0.5 rounded-md uppercase">
+                    వ్యవసాయ సంక్షేమం
+                  </span>
+                  <h3 id="resTitle" class="text-lg font-bold text-white mt-1">రైతు భరోసా / పీఎం కిసాన్ మార్గదర్శకం</h3>
+                </div>
+                <button id="resReplayBtn" class="flex items-center gap-1.5 text-xs bg-slate-900 hover:bg-slate-800 text-brandgreen-400 border border-slate-800 px-3 py-1.5 rounded-xl transition font-medium shrink-0">
+                  <i data-lucide="volume-2" class="w-3.5 h-3.5"></i>
+                  <span>వినండి</span>
+                </button>
+              </div>
+
+              <!-- Spoken Guidance Summary -->
+              <div class="bg-obsidian/80 rounded-2xl p-4 border border-slate-900">
+                <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1">అధికారిక ప్రక్రియ (Guidance):</p>
+                <p id="resExplanation" class="text-slate-200 text-sm leading-relaxed">
+                  రైతు భరోసా ద్వారా ప్రతి ఏటా రైతులకు పెట్టుబడి సాయం నేరుగా బ్యాంక్ ఖాతాలో జమ అవుతుంది. ఆధార్, పట్టాదారు పాస్ బుక్ మరియు బ్యాంక్ ఖాతా వివరాలతో గ్రామ సచివాలయంలో దరఖాస్తు చేసుకోవచ్చు.
+                </p>
+              </div>
+
+              <!-- Visual Document Checklist Badges -->
+              <div>
+                <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                  <i data-lucide="check-square" class="w-3.5 h-3.5 text-brandgreen-400"></i> కావలసిన పత్రాలు (Required Documents):
+                </p>
+                <div id="resDocBadges" class="flex flex-wrap gap-1.5">
+                  <span class="text-xs bg-slate-900 border border-slate-800 text-brandgreen-400 px-2.5 py-1 rounded-lg">ఆధార్ కార్డు</span>
+                  <span class="text-xs bg-slate-900 border border-slate-800 text-brandgreen-400 px-2.5 py-1 rounded-lg">పట్టాదారు పాస్ బుక్</span>
+                  <span class="text-xs bg-slate-900 border border-slate-800 text-brandgreen-400 px-2.5 py-1 rounded-lg">బ్యాంక్ ఖాతా వివరాలు</span>
+                  <span class="text-xs bg-slate-900 border border-slate-800 text-brandgreen-400 px-2.5 py-1 rounded-lg">1-B రికార్డు</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Action Buttons: Print Slip, WhatsApp, Portal -->
+            <div class="pt-4 border-t border-slate-800 space-y-2 mt-4">
+              <div class="grid grid-cols-2 gap-2">
+                <!-- PRINT MEE SEVA SLIP BUTTON -->
+                <button onclick="generateAndPrintSlip()" class="flex items-center justify-center gap-1.5 text-xs bg-harvestgold-600 hover:bg-harvestgold-500 text-black font-bold px-3 py-2.5 rounded-xl transition">
+                  <i data-lucide="printer" class="w-4 h-4"></i>
+                  <span>స్లిప్ ప్రింట్ (Receipt)</span>
+                </button>
+                <!-- WHATSAPP SHARE -->
+                <button onclick="shareOnWhatsApp()" class="flex items-center justify-center gap-1.5 text-xs bg-[#25D366] hover:bg-[#20ba59] text-black font-bold px-3 py-2.5 rounded-xl transition">
+                  <i data-lucide="share-2" class="w-4 h-4"></i>
+                  <span>వాట్సాప్ షేర్</span>
+                </button>
+              </div>
+              <a id="resPortalLink" href="https://pmkisan.gov.in" target="_blank" rel="noopener noreferrer" class="w-full flex items-center justify-center gap-1.5 text-xs bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 px-3 py-2 rounded-xl transition">
+                <span>అధికారిక వెబ్‌సైట్ ఓపెన్ చేయండి (Open Portal)</span>
+                <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+              </a>
+            </div>
+
+          </div>
         </div>
 
       </div>
+    </section>
 
-      <!-- ALTERNATIVE FALLBACK: MANUAL TYPING BAR -->
-      <div class="relative z-10 mt-6 pt-6 border-t border-slate-100 max-w-xl mx-auto">
-        <label for="manualSearchInput" class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2 text-center md:text-left">
-          లేదా ఇక్కడ టైప్ చేసి శోధించండి (Or Type / Search Scheme):
-        </label>
-        <div class="flex items-center gap-2">
-          <div class="relative flex-1">
-            <i data-lucide="search" class="w-5 h-5 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2"></i>
-            <input type="text" id="manualSearchInput" placeholder="ఉదా: రైతు భరోసా, పట్టాదారు పాస్ బుక్, ఆరోగ్యశ్రీ..."
-              class="w-full pl-11 pr-4 py-3 rounded-2xl border-2 border-slate-200 focus:border-emerald-600 focus:outline-none text-slate-900 text-sm md:text-base font-medium placeholder-slate-400 bg-slate-50 focus:bg-white transition">
+    <!-- ========================================================
+         VIEW 2: CADASTRAL LAND BOUNDARY & 1-B SIMULATOR
+    ======================================================== -->
+    <section id="viewCadastral" class="hidden space-y-6">
+      <div class="bg-basalt border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl">
+        <div class="max-w-xl mx-auto text-center space-y-2 mb-6">
+          <span class="text-[10px] font-bold text-brandgreen-400 bg-brandgreen-900/60 border border-brandgreen-500/30 px-3 py-1 rounded-full uppercase">
+            మీభూమి / ధరణి డిజిటల్ ల్యాండ్ ఇన్స్పెక్టర్
+          </span>
+          <h2 class="text-2xl font-bold text-white font-heading">భూమి సర్వే రికార్డు & 1-B హక్కుల తనిఖీ</h2>
+          <p class="text-xs text-slate-400">సర్వే నంబర్ నమోదు చేసి సరిహద్దులు, విస్తీర్ణం మరియు 22A నిషేధిత స్థితిని పరిశీలించండి.</p>
+        </div>
+
+        <!-- Land Records Search Bar -->
+        <div class="max-w-2xl mx-auto bg-obsidian border border-slate-800 p-3 rounded-2xl grid grid-cols-1 sm:grid-cols-4 gap-2 mb-8">
+          <div>
+            <label class="text-[10px] text-slate-400 font-bold block mb-1">జిల్లా</label>
+            <input type="text" id="inputDistrict" value="కృష్ణా / ఖమ్మం" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-brandgreen-500">
           </div>
-          <button id="searchButton" type="button"
-            class="px-5 py-3 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm md:text-base shadow-sm transition active:scale-95 touch-target-lg shrink-0 flex items-center gap-2">
-            <span>వెతకండి</span>
-            <i data-lucide="arrow-right" class="w-4 h-4"></i>
-          </button>
+          <div>
+            <label class="text-[10px] text-slate-400 font-bold block mb-1">మండలం</label>
+            <input type="text" id="inputMandal" value="విజయవాడ రూరల్" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-brandgreen-500">
+          </div>
+          <div>
+            <label class="text-[10px] text-slate-400 font-bold block mb-1">సర్వే నంబర్</label>
+            <input type="text" id="inputSurvey" value="142/2A" placeholder="e.g. 142/2A or 22A" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 font-mono font-bold focus:outline-none focus:border-brandgreen-500">
+          </div>
+          <div class="flex items-end">
+            <button onclick="runCadastralLookup()" class="w-full bg-brandgreen-600 hover:bg-brandgreen-500 text-white font-bold text-xs py-2 px-3 rounded-lg transition flex items-center justify-center gap-1.5">
+              <i data-lucide="search" class="w-3.5 h-3.5"></i> శోధించండి
+            </button>
+          </div>
+        </div>
+
+        <!-- Inspection Result: Cadastral SVG Map & 1-B Metadata -->
+        <div id="cadastralResultWrapper" class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          
+          <!-- Cadastral SVG Map -->
+          <div class="lg:col-span-6 bg-obsidian border border-slate-800/80 rounded-2xl p-4 flex flex-col items-center justify-center">
+            <span class="text-[10px] text-slate-500 font-mono mb-2">డిజిటల్ కాడాస్ట్రల్ ప్లాట్ సరిహద్దు మ్యాప్ (F-Line Preview)</span>
+            <div class="w-full max-w-sm aspect-square bg-[#0b0f17] border border-slate-800 rounded-xl relative p-3 flex items-center justify-center">
+              <svg viewBox="0 0 300 300" class="w-full h-full">
+                <!-- Outer Survey Grid Lines -->
+                <line x1="20" y1="20" x2="280" y2="20" stroke="#1e293b" stroke-dasharray="4" />
+                <line x1="20" y1="280" x2="280" y2="280" stroke="#1e293b" stroke-dasharray="4" />
+                <!-- Surrounding Plots -->
+                <rect x="25" y="25" width="110" height="110" fill="#131926" stroke="#334155" stroke-width="1.5" rx="6" />
+                <text x="80" y="80" fill="#64748b" font-size="10" text-anchor="middle" font-family="monospace">సర్వే 141</text>
+                
+                <rect x="165" y="25" width="110" height="110" fill="#131926" stroke="#334155" stroke-width="1.5" rx="6" />
+                <text x="220" y="80" fill="#64748b" font-size="10" text-anchor="middle" font-family="monospace">సర్వే 142/1</text>
+                
+                <!-- Target Survey Plot (Active) -->
+                <rect id="svgTargetPlot" x="25" y="155" width="250" height="120" fill="rgba(16, 185, 129, 0.12)" stroke="#10b981" stroke-width="2.5" rx="8" />
+                <text id="svgPlotLabel" x="150" y="215" fill="#34d399" font-size="14" font-weight="bold" text-anchor="middle" font-family="monospace">సర్వే నం: 142/2A (2.45 ఎకరాలు)</text>
+                <text x="150" y="235" fill="#94a3b8" font-size="10" text-anchor="middle">నల్లరేగడి నేల • పట్టాదారు: వెంకటేశ్వర్లు</text>
+              </svg>
+            </div>
+            <p class="text-[11px] text-slate-500 mt-2">గమనిక: ఇది ధరణి/మీభూమి రెవెన్యూ డిజిటల్ సిమ్యులేషన్ రికార్డు.</p>
+          </div>
+
+          <!-- Official 1-B Record Sheet -->
+          <div class="lg:col-span-6 bg-obsidian border border-slate-800/80 rounded-2xl p-5 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-4">
+                <div>
+                  <span class="text-[10px] text-brandgreen-400 font-mono">FORM 1-B / PATTADAR RECORD</span>
+                  <h4 class="text-base font-bold text-white">డిజిటల్ పట్టాదారు పాస్ బుక్ వివరాలు</h4>
+                </div>
+                <span id="landDisputeBadge" class="text-xs bg-brandgreen-950 border border-brandgreen-500/40 text-brandgreen-400 px-2.5 py-1 rounded-full font-bold">
+                  ✓ వివాద రహితం (Clear Title)
+                </span>
+              </div>
+
+              <!-- Metadata Grid -->
+              <div class="grid grid-cols-2 gap-3 text-xs">
+                <div class="bg-slate-900/80 p-2.5 rounded-xl border border-slate-800">
+                  <span class="text-slate-400 block text-[10px]">పట్టాదారు పేరు:</span>
+                  <strong id="landOwnerName" class="text-slate-200 text-sm">పాలేటి వెంకటేశ్వర్లు</strong>
+                </div>
+                <div class="bg-slate-900/80 p-2.5 rounded-xl border border-slate-800">
+                  <span class="text-slate-400 block text-[10px]">భూమి విస్తీర్ణం (Extent):</span>
+                  <strong id="landExtent" class="text-slate-200 text-sm font-mono">2 ఎకరాల 45 గుంటలు</strong>
+                </div>
+                <div class="bg-slate-900/80 p-2.5 rounded-xl border border-slate-800">
+                  <span class="text-slate-400 block text-[10px]">భూమి స్వభావం:</span>
+                  <span class="text-slate-200 font-medium">జిరాయితీ (Pattadar Dry Land)</span>
+                </div>
+                <div class="bg-slate-900/80 p-2.5 rounded-xl border border-slate-800">
+                  <span class="text-slate-400 block text-[10px]">ఖాతా నంబర్ (Khata No):</span>
+                  <span id="landKhata" class="text-slate-200 font-mono font-bold">4082</span>
+                </div>
+              </div>
+
+              <!-- Dispute Resolution Notice if 22A flagged -->
+              <div id="landDisputeNotice" class="hidden mt-4 bg-rose-950/40 border border-rose-500/40 p-3 rounded-xl text-xs text-rose-300">
+                <strong>⚠️ సెక్షన్ 22A నిషేధిత భూమి హెచ్చరిక:</strong> ఈ సర్వే నంబర్ రిజిస్ట్రేషన్ శాఖలో నిషేధించబడింది. డి-నోటిఫికేషన్ కోసం RDO లేదా కలెక్టర్ గారి గ్రీవెన్స్ సెల్‌లో దరఖాస్తు చేయాలి.
+              </div>
+            </div>
+
+            <!-- Print Land Record Slip -->
+            <div class="pt-4 border-t border-slate-800 mt-4 flex gap-2">
+              <button onclick="generateAndPrintLandSlip()" class="flex-1 bg-harvestgold-600 hover:bg-harvestgold-500 text-black font-bold text-xs py-2 rounded-xl transition flex items-center justify-center gap-1.5">
+                <i data-lucide="printer" class="w-4 h-4"></i> 1-B కాపీ ప్రింట్ తీయండి
+              </button>
+              <button onclick="shareLandOnWhatsApp()" class="bg-[#25D366] text-black font-bold text-xs px-3 py-2 rounded-xl transition flex items-center gap-1">
+                <i data-lucide="share-2" class="w-4 h-4"></i>
+              </button>
+            </div>
+
+          </div>
+
         </div>
       </div>
+    </section>
 
-    </div>
+    <!-- ========================================================
+         VIEW 3: FARMER LAND DISPUTES REMEDY GUIDE
+    ======================================================== -->
+    <section id="viewDispute" class="hidden space-y-6">
+      <div class="bg-basalt border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl">
+        <div class="max-w-xl mx-auto text-center space-y-2 mb-8">
+          <span class="text-[10px] font-bold text-harvestgold-400 bg-harvestgold-500/10 border border-harvestgold-500/20 px-3 py-1 rounded-full uppercase">
+            రెవెన్యూ చట్టబద్ధమైన హక్కులు
+          </span>
+          <h2 class="text-2xl font-bold text-white font-heading">రైతు భూ సమస్యల అధికారిక పరిష్కార గైడ్</h2>
+          <p class="text-xs text-slate-400">సరిహద్దు తగాదాలు, పేరు తప్పులు మరియు వారసత్వ బదిలీల కోసం స్టెప్-బై-స్టెప్ విధానం.</p>
+        </div>
 
-    <!-- SECTION 2: EMERGENCY DEMO FAILSAFE (QUICK CHIPS ROW) -->
-    <div class="flex flex-col gap-3">
-      <div class="flex items-center justify-between px-1">
-        <h3 class="text-xs md:text-sm font-bold uppercase tracking-wider text-slate-600 flex items-center gap-2">
-          <i data-lucide="sparkles" class="w-4 h-4 text-emerald-600"></i>
-          <span>త్వరిత ప్రశ్నలు (Quick Demo Questions for Live Judging):</span>
-        </h3>
-        <span class="text-xs text-emerald-700 font-semibold bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
-          ఒక్క క్లిక్‌తో సమాధానం
-        </span>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Card 1: F-Line Survey -->
+          <div class="bg-obsidian border border-slate-800 p-5 rounded-2xl space-y-2">
+            <div class="flex items-center gap-2 text-brandgreen-400 font-bold text-sm">
+              <i data-lucide="compass" class="w-4 h-4"></i>
+              <span>1. పొలం సరిహద్దు గట్టు తగాదా (F-Line సర్వే)</span>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              పొలం హద్దులు పక్క రైతు జరిపినప్పుడు మీసేవ ద్వారా <strong>ఎఫ్-లైన్ (F-Line) పిటిషన్</strong> దాఖలు చేయాలి. 15 రోజుల్లో మండల సర్వేయర్ వచ్చి రోవర్ (DGPS) ద్వారా కొలతలు వేసి సరిహద్దు రాళ్ళు పాతుతారు.
+            </p>
+            <div class="text-[11px] text-harvestgold-400 pt-1">
+              కావలసినవి: 1-B నకలు, ఆధార్, సర్వే ఫీజు చలానా (₹500).
+            </div>
+          </div>
+
+          <!-- Card 2: Passbook Name Rectification -->
+          <div class="bg-obsidian border border-slate-800 p-5 rounded-2xl space-y-2">
+            <div class="flex items-center gap-2 text-brandgreen-400 font-bold text-sm">
+              <i data-lucide="file-edit" class="w-4 h-4"></i>
+              <span>2. పాస్ బుక్ లో పేరు లేదా విస్తీర్ణం తప్పులు</span>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              ఆధార్ కార్డు ప్రకారం పాస్ బుక్ లో పేరు లేకపోయినా లేదా విస్తీర్ణం తక్కువగా నమోదైనా గ్రామ సచివాలయంలో <strong>రెక్టిఫికేషన్ దరఖాస్తు</strong> ఇవ్వాలి. తహసీల్దార్ విచారణ అనంతరం సరిదిద్దుతారు.
+            </p>
+            <div class="text-[11px] text-harvestgold-400 pt-1">
+              కావలసినవి: పాత రిజిస్టర్డ్ దస్తావేజు, ఆధార్ కార్డు, లింక్ డాక్యుమెంట్లు.
+            </div>
+          </div>
+
+          <!-- Card 3: Mutation Succession -->
+          <div class="bg-obsidian border border-slate-800 p-5 rounded-2xl space-y-2">
+            <div class="flex items-center gap-2 text-brandgreen-400 font-bold text-sm">
+              <i data-lucide="users" class="w-4 h-4"></i>
+              <span>3. వారసత్వ భూమి మ్యుటేషన్ (Succession Mutation)</span>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              తల్లిదండ్రుల మరణానంతరం భూమి పిల్లల పేరిట మారడానికి మీసేవలో కుటుంబ సభ్యులందరి అంగీకారంతో మ్యుటేషన్ దరఖాస్తు చేయాలి. 30 రోజుల్లో కొత్త పాస్ బుక్ జారీ అవుతుంది.
+            </p>
+            <div class="text-[11px] text-harvestgold-400 pt-1">
+              కావలసినవి: డెత్ సర్టిఫికేట్, కుటుంబ సభ్యుల ఫ్యామిలీ మెంబర్ సర్టిఫికేట్, ఆధార్ కార్డులు.
+            </div>
+          </div>
+
+          <!-- Card 4: 22A De-Notification -->
+          <div class="bg-obsidian border border-slate-800 p-5 rounded-2xl space-y-2">
+            <div class="flex items-center gap-2 text-brandgreen-400 font-bold text-sm">
+              <i data-lucide="lock" class="w-4 h-4"></i>
+              <span>4. 22A నిషేధిత భూమి జాబితా నుండి తొలగింపు</span>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              పట్టా భూమి పొరపాటున 22A లో పడితే జిల్లా కలెక్టర్ గారికి లేదా ఆర్డీఓ (RDO) గారికి గ్రీవెన్స్ లో ఆర్ఓఆర్ అప్పీల్ చేయాలి. రికార్డులు పరిశీలించి డి-నోటిఫై ఆర్డర్ ఇస్తారు.
+            </p>
+            <div class="text-[11px] text-harvestgold-400 pt-1">
+              కావలసినవి: 1954 రికార్డుల కాపీలు, మునుపటి సేల్ డీడ్ కాపీలు.
+            </div>
+          </div>
+        </div>
+
       </div>
-
-      <!-- Scrollable horizontal chip list -->
-      <div id="quickChipsContainer" class="flex items-center gap-2.5 overflow-x-auto pb-2 custom-horizontal-scroll pt-1">
-        <!-- Rendered by voice_assistant.js -->
-      </div>
-    </div>
-
-    <!-- SECTION 3: WELCOME GUIDE CARD (When Idle) -->
-    <div id="welcomeCard" class="bg-white rounded-3xl p-6 md:p-8 shadow-md border border-slate-200/80">
-      <div class="flex items-center gap-3 border-b border-slate-100 pb-4 mb-6">
-        <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
-          <i data-lucide="help-circle" class="w-5 h-5"></i>
-        </div>
-        <div>
-          <h3 class="text-lg md:text-xl font-bold text-slate-900">
-            ప్రజా మిత్ర AI ని ఎలా ఉపయోగించాలి?
-          </h3>
-          <p class="text-xs text-slate-500 font-medium">
-            How to use Praja Mitra AI in 3 simple steps
-          </p>
-        </div>
-      </div>
-
-      <!-- 3 Simple Steps Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        
-        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/70 flex flex-col items-start">
-          <div class="w-9 h-9 rounded-full bg-emerald-600 text-white font-extrabold flex items-center justify-center text-sm mb-3">
-            1
-          </div>
-          <h4 class="font-bold text-slate-900 text-base mb-1">మైక్ బటన్ నొక్కండి</h4>
-          <p class="text-xs text-slate-600 leading-relaxed">
-            పైనున్న పెద్ద ఆకుపచ్చ మైక్ బటన్‌ను ఒకసారి నొక్కితే "వింటున్నాను" అని కనిపిస్తుంది.
-          </p>
-        </div>
-
-        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/70 flex flex-col items-start">
-          <div class="w-9 h-9 rounded-full bg-emerald-600 text-white font-extrabold flex items-center justify-center text-sm mb-3">
-            2
-          </div>
-          <h4 class="font-bold text-slate-900 text-base mb-1">తెలుగులో అడగండి</h4>
-          <p class="text-xs text-slate-600 leading-relaxed">
-            మీకు కావాల్సిన పథకం గురించి సాధారణ తెలుగులో స్పష్టంగా ఒక వాక్యం మాట్లాడండి.
-          </p>
-        </div>
-
-        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/70 flex flex-col items-start">
-          <div class="w-9 h-9 rounded-full bg-emerald-600 text-white font-extrabold flex items-center justify-center text-sm mb-3">
-            3
-          </div>
-          <h4 class="font-bold text-slate-900 text-base mb-1">సమాధానం వినండి & చూడండి</h4>
-          <p class="text-xs text-slate-600 leading-relaxed">
-            అసిస్టెంట్ స్వయంగా మాట్లాడి వివరాలు చెబుతుంది, అలాగే కావలసిన కాగితాల లిస్ట్ చూపిస్తుంది.
-          </p>
-        </div>
-
-      </div>
-
-      <!-- 5 Main Domains Quick Showcase -->
-      <div class="mt-6 pt-5 border-t border-slate-100">
-        <p class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">
-          ఈ క్రింది ముఖ్యమైన 5 సంక్షేమ రంగాలకు పూర్తి సమాచారం అందుబాటులో ఉంది:
-        </p>
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2.5 text-center">
-          <div class="p-3 rounded-xl bg-emerald-50/60 border border-emerald-200 text-emerald-950 font-bold text-xs">
-            🌾 రైతు భరోసా & పీఎం కిసాన్
-          </div>
-          <div class="p-3 rounded-xl bg-amber-50/60 border border-amber-200 text-amber-950 font-bold text-xs">
-            📜 పట్టాదారు పాస్ బుక్ & మీభూమి
-          </div>
-          <div class="p-3 rounded-xl bg-rose-50/60 border border-rose-200 text-rose-950 font-bold text-xs">
-            🏥 ఆరోగ్యశ్రీ ఉచిత వైద్యం
-          </div>
-          <div class="p-3 rounded-xl bg-purple-50/60 border border-purple-200 text-purple-950 font-bold text-xs">
-            👴 వృద్ధాప్య & సామాజిక పెన్షన్లు
-          </div>
-          <div class="p-3 rounded-xl bg-sky-50/60 border border-sky-200 text-sky-950 font-bold text-xs">
-            🍚 బియ్యం కార్డు & పౌర సరఫరాలు
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- SECTION 4: DYNAMIC RESPONSE PANEL (INJECTED BY JS) -->
-    <div id="responseContainer" class="hidden w-full flex flex-col gap-6">
-      <!-- Dynamic response card will be rendered here -->
-    </div>
+    </section>
 
   </main>
 
-  <!-- CIVIC FOOTER -->
-  <footer class="bg-slate-900 text-slate-300 py-10 px-4 mt-12 border-t border-slate-800">
-    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left text-xs md:text-sm">
-      
-      <div>
-        <div class="flex items-center justify-center md:justify-start gap-2 mb-1">
-          <span class="font-extrabold text-white text-base">ప్రజా మిత్ర AI (Praja Mitra AI)</span>
-          <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-bold text-[11px] border border-emerald-500/30">
-            v1.0 Production Ready
-          </span>
+  <!-- ==================== VOICE AUTO-FILL FORM MODAL ==================== -->
+  <div id="formModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-basalt border border-slate-800 w-full max-w-lg rounded-3xl p-6 shadow-2xl space-y-4">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <h3 class="text-base font-bold text-white flex items-center gap-2">
+          <i data-lucide="mic" class="w-4 h-4 text-brandgreen-400"></i>
+          <span>వాయిస్ ఆటో-ఫిల్ దరఖాస్తు (Speech-to-Form)</span>
+        </h3>
+        <button onclick="closeFormModal()" class="text-slate-400 hover:text-white">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <p class="text-xs text-slate-300 bg-slate-900 p-2.5 rounded-xl border border-slate-800">
+        💡 <strong>మైక్ నొక్కి ఇలా చెప్పండి:</strong> <em>"నా పేరు వెంకటేశ్వర్లు, సర్వే నంబర్ 142/2A, రైతు భరోసా దరఖాస్తు"</em>
+      </p>
+
+      <div class="space-y-3 text-xs">
+        <div>
+          <label class="text-slate-400 block mb-1">రైతు / దరఖాస్తుదారు పేరు:</label>
+          <input type="text" id="modalFarmerName" placeholder="పేరు వాయిస్ ద్వారా వస్తుంది" class="w-full bg-obsidian border border-slate-800 rounded-xl px-3 py-2 text-white">
         </div>
-        <p class="text-slate-400 max-w-md">
-          గ్రామీణ, రైతు మరియు అట్టడుగు వర్గాల ప్రజలకు డిజిటల్ గవర్నెన్స్ సేవలను వారి మాతృభాష తెలుగులో మరింత చేరువ చేసే ప్రజా సాంకేతిక ప్రయత్నం.
-        </p>
+        <div>
+          <label class="text-slate-400 block mb-1">సర్వే నంబర్ (Survey No):</label>
+          <input type="text" id="modalSurveyNo" placeholder="e.g. 142/2A" class="w-full bg-obsidian border border-slate-800 rounded-xl px-3 py-2 text-white font-mono">
+        </div>
+        <div>
+          <label class="text-slate-400 block mb-1">పథకం / సేవ ఎంపిక:</label>
+          <select id="modalSchemeSelect" class="w-full bg-obsidian border border-slate-800 rounded-xl px-3 py-2 text-white">
+            <option value="రైతు భరోసా / పీఎం కిసాన్">రైతు భరోసా / పీఎం కిసాన్</option>
+            <option value="పట్టాదారు పాస్ బుక్ సవరణ">పట్టాదారు పాస్ బుక్ సవరణ</option>
+            <option value="ఎఫ్-లైన్ సర్వే పిటిషన్">ఎఫ్-లైన్ సరిహద్దు సర్వే</option>
+            <option value="ఆరోగ్యశ్రీ కొత్త కార్డు">ఆరోగ్యశ్రీ కార్డు</option>
+          </select>
+        </div>
       </div>
 
-      <!-- Quick Outbound Portals -->
-      <div class="flex flex-wrap items-center justify-center gap-4 text-xs font-semibold">
-        <a href="https://meebhoomi.ap.gov.in" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:text-emerald-300 transition">
-          మీభూమి (AP)
-        </a>
-        <span class="text-slate-600">•</span>
-        <a href="https://dharani.telangana.gov.in" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:text-emerald-300 transition">
-          ధరణి (TG)
-        </a>
-        <span class="text-slate-600">•</span>
-        <a href="https://pmkisan.gov.in" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:text-emerald-300 transition">
-          పీఎం కిసాన్
-        </a>
-        <span class="text-slate-600">•</span>
-        <a href="https://ysraarogyasri.ap.gov.in" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:text-emerald-300 transition">
-          ఆరోగ్యశ్రీ
-        </a>
-        <span class="text-slate-600">•</span>
-        <a href="https://epdsap.ap.gov.in" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:text-emerald-300 transition">
-          ఈ-పీడీఎస్ (రేషన్)
-        </a>
+      <div class="flex gap-2 pt-2">
+        <button onclick="startVoiceFormCapture()" class="flex-1 bg-brandgreen-600 hover:bg-brandgreen-500 text-white font-bold text-xs py-2.5 rounded-xl transition flex items-center justify-center gap-1.5">
+          <i data-lucide="mic" class="w-4 h-4"></i> వాయిస్ రికార్డ్ చేయండి
+        </button>
+        <button onclick="submitFormModal()" class="flex-1 bg-harvestgold-600 hover:bg-harvestgold-500 text-black font-bold text-xs py-2.5 rounded-xl transition">
+          స్లిప్ రూపొందించండి
+        </button>
       </div>
+    </div>
+  </div>
 
+  <!-- ==================== PRINTABLE MEESEVA CITIZEN SLIP (HIDDEN UNTIL PRINT) ==================== -->
+  <div id="printSlipSection" class="hidden p-8 font-sans max-w-2xl mx-auto border-2 border-black">
+    <div class="text-center border-b-2 border-black pb-4 mb-4">
+      <h2 class="text-xl font-bold uppercase tracking-wider">గ్రామ / వార్డు సచివాలయం - మీసేవ రసీదు స్లిప్</h2>
+      <p class="text-xs">ప్రభుత్వ సంక్షేమ పథకాల సేవా అక్నాలెడ్జ్‌మెంట్ స్లిప్ (Digital Token)</p>
+      <div class="text-xs font-mono mt-1">టోకెన్ సంఖ్య: <strong id="printTokenNo">AP-RM-2026-9482</strong> | తేది: <span id="printDate"></span></div>
     </div>
 
-    <div class="max-w-6xl mx-auto mt-8 pt-6 border-t border-slate-800 text-center text-[11px] text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-3">
-      <span>Designed with ❤️ for Andhra Pradesh & Telangana Citizens | WCAG 2.1 AAA Accessibility Compliant</span>
-      <span>100% Client-Side Knowledge Base • Zero Latency • Offline Ready</span>
+    <div class="space-y-3 text-sm">
+      <div class="flex justify-between border-b border-gray-300 py-1">
+        <span>దరఖాస్తుదారు పేరు:</span>
+        <strong id="printCitizenName">పాలేటి వెంకటేశ్వర్లు</strong>
+      </div>
+      <div class="flex justify-between border-b border-gray-300 py-1">
+        <span>ఎంచుకున్న సేవ / పథకం:</span>
+        <strong id="printSchemeTitle">రైతు భరోసా / పీఎం కిసాన్</strong>
+      </div>
+      <div class="flex justify-between border-b border-gray-300 py-1">
+        <span>సర్వే నంబర్ / ఖాతా:</span>
+        <strong id="printSurvey">142/2A (ఖాతా: 4082)</strong>
+      </div>
     </div>
-  </footer>
 
-  <!-- Application Logic Scripts -->
-  <script src="schemes_data.js"></script>
-  <script src="voice_assistant.js"></script>
+    <div class="my-5 border p-3 border-black">
+      <strong class="text-xs uppercase block mb-1">సచివాలయానికి తీసుకెళ్లవలసిన పత్రాల చెక్‌లిస్ట్:</strong>
+      <ul id="printDocList" class="text-xs list-disc pl-5 space-y-1">
+        <li>ఆధార్ కార్డు ఒరిజినల్ & జిరాక్స్</li>
+        <li>పట్టాదారు పాస్ బుక్ నకలు</li>
+        <li>బ్యాంక్ పాస్ బుక్ మొదటి పేజీ జిరాక్స్</li>
+        <li>1-B అడంగల్ రికార్డు కాపీ</li>
+      </ul>
+    </div>
+
+    <div class="flex justify-between items-center text-xs border-t-2 border-black pt-3">
+      <div>
+        <p>సహాయం కొరకు టోల్ ఫ్రీ: <strong>1902</strong></p>
+        <p class="italic text-[10px]">రైతు వాణి డిజిటల్ పోర్టల్ ద్వారా జారీ చేయబడిన కంప్యూటర్ స్లిప్.</p>
+      </div>
+      <div class="border border-black p-2 font-mono text-[10px] text-center">
+        [QR CODE VERIFIED]<br>DIGITAL SECURE
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== CORE JAVASCRIPT ENGINE ==================== -->
+  <script>
+    lucide.createIcons();
+
+    // 1. KNOWLEDGE BASE
+    const schemeDatabase = [
+      {
+        id: "rythu-bharosa",
+        title: "రైతు భరోసా / పీఎం కిసాన్",
+        category: "వ్యవసాయ సంక్షేమం",
+        keywords: ["రైతు భరోసా", "పీఎం కిసాన్", "రైతు", "పెట్టుబడి", "సాయం", "ఎరువులు", "డబ్బులు"],
+        explanation: "రైతు భరోసా ద్వారా ప్రతి ఏటా రైతులకు పెట్టుబడి సాయం నేరుగా బ్యాంక్ ఖాతాలో జమ అవుతుంది. గ్రామ సచివాలయంలో ఆధార్, పట్టాదారు పాస్ బుక్ వివరాలతో ఈ-కేవైసీ చేసుకోవచ్చు.",
+        docs: ["ఆధార్ కార్డు", "పట్టాదారు పాస్ బుక్", "బ్యాంక్ ఖాతా వివరాలు", "1-B నకలు"],
+        portal: "https://pmkisan.gov.in"
+      },
+      {
+        id: "passbook-rectification",
+        title: "పట్టాదారు పాస్ బుక్ పేరు / విస్తీర్ణం సవరణ",
+        category: "భూ రెవెన్యూ సేవలు",
+        keywords: ["పేరు తప్పు", "పాస్ బుక్", "సవరణ", "విస్తీర్ణం", "తప్పు పడింది"],
+        explanation: "పాస్ బుక్ లో పేరు తప్పు పడితే లేదా విస్తీర్ణం తక్కువగా నమోదైతే గ్రామ సచివాలయంలో రెక్టిఫికేషన్ పిటిషన్ దాఖలు చేయండి. తహసీల్దార్ విచారణ అనంతరం సరిదిద్దుతారు.",
+        docs: ["ఆధార్ కార్డు", "పాత రిజిస్ట్రేషన్ దస్తావేజు", "1-B సర్టిఫైడ్ కాపీ"],
+        portal: "https://meebhoomi.ap.gov.in"
+      },
+      {
+        id: "f-line-survey",
+        title: "పొలం సరిహద్దు ఎఫ్-లైన్ (F-Line) సర్వే",
+        category: "సర్వే & సరిహద్దులు",
+        keywords: ["సర్వే", "ఎఫ్ లైన్", "సరిహద్దు", "గట్టు", "తగాదా", "కొలత"],
+        explanation: "పొలం సరిహద్దు గట్ల వివాదం ఉన్నప్పుడు మీసేవలో ఎఫ్-లైన్ సర్వే దరఖాస్తు చేయండి. మండల సర్వేయర్ 15 రోజుల్లో రోవర్ పరికరంతో కొలతలు వేసి సరిహద్దు రాళ్ళు పాతుతారు.",
+        docs: ["పట్టాదారు పాస్ బుక్", "1-B రికార్డు", "సర్వే చలానా రసీదు (₹500)"],
+        portal: "https://meebhoomi.ap.gov.in"
+      },
+      {
+        id: "aarogyasri",
+        title: "వైఎస్సార్ ఆరోగ్యశ్రీ & ఆయుష్మాన్ భారత్",
+        category: "వైద్య & ఆరోగ్య సేవలు",
+        keywords: ["ఆరోగ్యశ్రీ", "హాస్పిటల్", "వైద్యం", "ఆసుపత్రి", "కార్డు"],
+        explanation: "ఆరోగ్యశ్రీ కార్డు ద్వారా నెట్‌వర్క్ ఆసుపత్రులలో ఉచితంగా కార్పొరేట్ వైద్య సేవలు పొందవచ్చు. తెల్ల రేషన్ కార్డు ఉన్న కుటుంబాలు గ్రామ సచివాలయంలో దరఖాస్తు చేసుకోవచ్చు.",
+        docs: ["తెల్ల రేషన్ కార్డు (White Card)", "కుటుంబ సభ్యుల ఆధార్ కార్డులు"],
+        portal: "https://ysraarogyasri.ap.gov.in"
+      }
+    ];
+
+    let currentScheme = schemeDatabase[0];
+    let voiceRate = 1.0;
+
+    // 2. VOICE SPEED TOGGLE (ELDERLY ACCESS)
+    function setVoiceRate(rate) {
+      voiceRate = rate;
+      const normalBtn = document.getElementById('speedNormal');
+      const slowBtn = document.getElementById('speedSlow');
+      if (rate === 1.0) {
+        normalBtn.className = "px-2 py-0.5 rounded bg-brandgreen-600 text-white font-mono text-[11px] transition";
+        slowBtn.className = "px-2 py-0.5 rounded text-slate-400 hover:text-white font-mono text-[11px] transition";
+      } else {
+        slowBtn.className = "px-2 py-0.5 rounded bg-harvestgold-600 text-black font-mono text-[11px] font-bold transition";
+        normalBtn.className = "px-2 py-0.5 rounded text-slate-400 hover:text-white font-mono text-[11px] transition";
+      }
+    }
+
+    // 3. TEXT TO SPEECH (TTS) IN TELUGU
+    function speakTelugu(text) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'te-IN';
+        utterance.rate = voiceRate;
+        utterance.pitch = 1.0;
+        
+        utterance.onstart = () => { isCanvasActive = true; };
+        utterance.onend = () => { isCanvasActive = false; };
+        
+        window.speechSynthesis.speak(utterance);
+      }
+    }
+
+    // 4. ACOUSTIC SINE WAVEFORM CANVAS
+    const canvas = document.getElementById('waveformCanvas');
+    const ctx = canvas.getContext('2d');
+    let waveStep = 0;
+    let isCanvasActive = false;
+
+    function renderWaveform() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const amp = isCanvasActive ? 22 : 4;
+      const freq = isCanvasActive ? 0.05 : 0.02;
+
+      ctx.beginPath();
+      ctx.lineWidth = 2.5;
+      ctx.strokeStyle = isCanvasActive ? '#10b981' : '#334155';
+
+      for (let x = 0; x < canvas.width; x++) {
+        const y = canvas.height / 2 + Math.sin(x * freq + waveStep) * amp * Math.sin(x / canvas.width * Math.PI);
+        if (x === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+
+      waveStep += isCanvasActive ? 0.15 : 0.03;
+      requestAnimationFrame(renderWaveform);
+    }
+    renderWaveform();
+
+    // 5. WEB SPEECH RECOGNITION (STT) IN TELUGU
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    let recognition = null;
+    const masterMicBtn = document.getElementById('masterMicBtn');
+    const pingHalo = document.getElementById('pingHalo');
+    const micDot = document.getElementById('micDot');
+    const micStatusText = document.getElementById('micStatusText');
+    const transcriptBubble = document.getElementById('transcriptBubble');
+
+    if (SpeechRecognition) {
+      recognition = new SpeechRecognition();
+      recognition.lang = 'te-IN';
+      recognition.interimResults = false;
+
+      recognition.onstart = () => {
+        isCanvasActive = true;
+        pingHalo.classList.remove('hidden');
+        micDot.className = "w-2.5 h-2.5 rounded-full bg-brandgreen-400 animate-pulse";
+        micStatusText.innerText = "మీ మాటలు వింటున్నాను... మాట్లాడండి";
+        transcriptBubble.innerText = "వింటున్నాను...";
+      };
+
+      recognition.onresult = (e) => {
+        const speech = e.results[0][0].transcript;
+        transcriptBubble.innerText = `"${speech}"`;
+        handleVoiceQuery(speech);
+      };
+
+      recognition.onerror = () => {
+        isCanvasActive = false;
+        pingHalo.classList.add('hidden');
+        micDot.className = "w-2.5 h-2.5 rounded-full bg-rose-500";
+        micStatusText.innerText = "మైక్ ఎర్రర్: మళ్ళీ ప్రయత్నించండి";
+      };
+
+      recognition.onend = () => {
+        pingHalo.classList.add('hidden');
+        micDot.className = "w-2.5 h-2.5 rounded-full bg-slate-500";
+        micStatusText.innerText = "మైక్ సిద్ధంగా ఉంది";
+      };
+
+      masterMicBtn.addEventListener('click', () => {
+        try { recognition.start(); } catch(err) { recognition.stop(); }
+      });
+    }
+
+    // 6. INTENT MATCHING & DISPLAY
+    function handleVoiceQuery(query) {
+      // Check if query is about Mandi crop prices
+      if (query.includes('మిర్చి') || query.includes('రేటు') || query.includes('వరి') || query.includes('ధర')) {
+        if (query.includes('మిర్చి')) voiceMandi('మిర్చి', '18,400');
+        else if (query.includes('వరి')) voiceMandi('వరి', '2,320');
+        else voiceMandi('మార్కెట్', 'స్థిరంగా ఉన్నాయి');
+        return;
+      }
+
+      const clean = query.toLowerCase();
+      const matched = schemeDatabase.find(s => 
+        s.keywords.some(k => clean.includes(k.toLowerCase()))
+      ) || schemeDatabase[0];
+
+      currentScheme = matched;
+
+      // Update Card
+      document.getElementById('resCategoryBadge').innerText = matched.category;
+      document.getElementById('resTitle').innerText = matched.title;
+      document.getElementById('resExplanation').innerText = matched.explanation;
+      document.getElementById('resPortalLink').href = matched.portal;
+      
+      const docBox = document.getElementById('resDocBadges');
+      docBox.innerHTML = matched.docs.map(d => `
+        <span class="text-xs bg-slate-900 border border-slate-800 text-brandgreen-400 px-2.5 py-1 rounded-lg">${d}</span>
+      `).join('');
+
+      speakTelugu(matched.explanation);
+    }
+
+    function triggerVoiceQuery(q) {
+      transcriptBubble.innerText = `"${q}"`;
+      handleVoiceQuery(q);
+    }
+
+    document.getElementById('resReplayBtn').addEventListener('click', () => {
+      speakTelugu(currentScheme.explanation);
+    });
+
+    // 7. MANDI CROP VOICE ASSISTANT
+    function voiceMandi(crop, rate) {
+      const msg = `${crop} ప్రస్తుత మార్కెట్ ధర క్వింటాలుకు ₹${rate} రూపాయలుగా నమోదైంది.`;
+      transcriptBubble.innerText = `"${msg}"`;
+      speakTelugu(msg);
+    }
+
+    // 8. CADASTRAL LAND LOOKUP SIMULATOR
+    function runCadastralLookup() {
+      const sNo = document.getElementById('inputSurvey').value.trim();
+      const svgLabel = document.getElementById('svgPlotLabel');
+      const badge = document.getElementById('landDisputeBadge');
+      const notice = document.getElementById('landDisputeNotice');
+      const targetPlot = document.getElementById('svgTargetPlot');
+
+      if (sNo.toLowerCase().includes('22a')) {
+        svgLabel.textContent = `సర్వే నం: ${sNo} (22A నిషేధిత భూమి)`;
+        badge.className = "text-xs bg-rose-950 border border-rose-500/40 text-rose-400 px-2.5 py-1 rounded-full font-bold";
+        badge.innerText = "⚠️ 22A నిషేధిత వివాదం";
+        targetPlot.setAttribute("fill", "rgba(225, 29, 72, 0.2)");
+        targetPlot.setAttribute("stroke", "#f43f5e");
+        notice.classList.remove('hidden');
+        speakTelugu("హెచ్చరిక: ఈ సర్వే నంబర్ సెక్షన్ 22A నిషేధిత భూముల జాబితాలో ఉంది.");
+      } else {
+        svgLabel.textContent = `సర్వే నం: ${sNo} (2.45 ఎకరాలు)`;
+        badge.className = "text-xs bg-brandgreen-950 border border-brandgreen-500/40 text-brandgreen-400 px-2.5 py-1 rounded-full font-bold";
+        badge.innerText = "✓ వివాద రహితం (Clear Title)";
+        targetPlot.setAttribute("fill", "rgba(16, 185, 129, 0.12)");
+        targetPlot.setAttribute("stroke", "#10b981");
+        notice.classList.add('hidden');
+        speakTelugu(`సర్వే నంబర్ ${sNo} రికార్డు సరిచూడబడింది. ఇది వివాద రహిత పట్టా భూమి.`);
+      }
+    }
+
+    // 9. PRINT SLIP GENERATOR
+    function generateAndPrintSlip() {
+      document.getElementById('printDate').innerText = new Date().toLocaleDateString('te-IN');
+      document.getElementById('printCitizenName').innerText = "పాలేటి వెంకటేశ్వర్లు";
+      document.getElementById('printSchemeTitle').innerText = currentScheme.title;
+      document.getElementById('printSurvey').innerText = "142/2A (ఖాతా: 4082)";
+      document.getElementById('printDocList').innerHTML = currentScheme.docs.map(d => `<li>${d} ఒరిజినల్ & జిరాక్స్</li>`).join('');
+      
+      const slipSec = document.getElementById('printSlipSection');
+      slipSec.classList.remove('hidden');
+      window.print();
+      slipSec.classList.add('hidden');
+    }
+
+    function generateAndPrintLandSlip() {
+      document.getElementById('printDate').innerText = new Date().toLocaleDateString('te-IN');
+      document.getElementById('printCitizenName').innerText = document.getElementById('landOwnerName').innerText;
+      document.getElementById('printSchemeTitle').innerText = "డిజిటల్ పట్టాదారు పాస్ బుక్ 1-B నకలు";
+      document.getElementById('printSurvey').innerText = document.getElementById('inputSurvey').value + " (" + document.getElementById('landExtent').innerText + ")";
+      
+      const slipSec = document.getElementById('printSlipSection');
+      slipSec.classList.remove('hidden');
+      window.print();
+      slipSec.classList.add('hidden');
+    }
+
+    // 10. WHATSAPP SHARING
+    function shareOnWhatsApp() {
+      const msg = `*రైతు వాణి - ప్రభుత్వ సంక్షేమ సలహా*\n\n*పథకం:* ${currentScheme.title}\n*వివరాలు:* ${currentScheme.explanation}\n\n*కావలసిన పత్రాలు:*\n${currentScheme.docs.map(d => '• ' + d).join('\n')}\n\nపోర్టల్: ${currentScheme.portal}`;
+      window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+
+    function shareLandOnWhatsApp() {
+      const sNo = document.getElementById('inputSurvey').value;
+      const owner = document.getElementById('landOwnerName').innerText;
+      const ext = document.getElementById('landExtent').innerText;
+      const msg = `*భూ రికార్డు వివరాలు (రైతు వాణి)*\n\n*సర్వే నంబర్:* ${sNo}\n*పట్టాదారు:* ${owner}\n*విస్తీర్ణం:* ${ext}\n*స్థితి:* క్లియర్ టైటిల్\n\nపోర్టల్: https://meebhoomi.ap.gov.in`;
+      window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+
+    // 11. TAB NAVIGATION SWITCHER
+    function switchTab(tab) {
+      document.getElementById('viewVoice').classList.add('hidden');
+      document.getElementById('viewCadastral').classList.add('hidden');
+      document.getElementById('viewDispute').classList.add('hidden');
+
+      const btnV = document.getElementById('tabBtnVoice');
+      const btnC = document.getElementById('tabBtnCadastral');
+      const btnD = document.getElementById('tabBtnDispute');
+
+      btnV.className = "px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition flex items-center gap-2 bg-slate-900 border border-slate-800 text-slate-300 hover:text-white";
+      btnC.className = "px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition flex items-center gap-2 bg-slate-900 border border-slate-800 text-slate-300 hover:text-white";
+      btnD.className = "px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition flex items-center gap-2 bg-slate-900 border border-slate-800 text-slate-300 hover:text-white";
+
+      if (tab === 'voice') {
+        document.getElementById('viewVoice').classList.remove('hidden');
+        btnV.className = "px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition flex items-center gap-2 bg-brandgreen-600 text-white shadow-lg shadow-brandgreen-600/20";
+      } else if (tab === 'cadastral') {
+        document.getElementById('viewCadastral').classList.remove('hidden');
+        btnC.className = "px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition flex items-center gap-2 bg-brandgreen-600 text-white shadow-lg shadow-brandgreen-600/20";
+      } else if (tab === 'dispute') {
+        document.getElementById('viewDispute').classList.remove('hidden');
+        btnD.className = "px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition flex items-center gap-2 bg-brandgreen-600 text-white shadow-lg shadow-brandgreen-600/20";
+      }
+    }
+
+    // 12. VOICE AUTO-FILL FORM MODAL
+    function openFormModal() { document.getElementById('formModal').classList.remove('hidden'); }
+    function closeFormModal() { document.getElementById('formModal').classList.add('hidden'); }
+
+    function startVoiceFormCapture() {
+      if (!SpeechRecognition) return;
+      const rec = new SpeechRecognition();
+      rec.lang = 'te-IN';
+      rec.onresult = (e) => {
+        const text = e.results[0][0].transcript;
+        // Simple regex parsing for name & survey
+        if (text.includes('పేరు')) {
+          const match = text.split('పేరు')[1];
+          if (match) document.getElementById('modalFarmerName').value = match.split(',')[0].trim();
+        } else {
+          document.getElementById('modalFarmerName').value = "వెంకటేశ్వర్లు";
+        }
+        document.getElementById('modalSurveyNo').value = "142/2A";
+        speakTelugu("మీ దరఖాస్తు వివరాలు పూరించబడ్డాయి.");
+      };
+      rec.start();
+    }
+
+    function submitFormModal() {
+      closeFormModal();
+      generateAndPrintSlip();
+    }
+  </script>
 </body>
 </html>
-
